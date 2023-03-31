@@ -2,6 +2,7 @@ from collections import OrderedDict
 from PyPDF2 import PdfReader
 import pandas as pd
 import pprint
+import matplotlib.pyplot as plt
 
 pp = pprint.PrettyPrinter(indent=4)
 market_folder = "./market"
@@ -95,7 +96,7 @@ for line in lines:
             elif n == 1:
                 n = 0
                 l[-1] = f"{l[-1]}{i}"
-        data[current]["Cost"] = l
+        data[current]["Cost"] = [int(i) for i in l]
         # data[current]["Cost"] = sv
         current = None
     if marketing_retail in line:
@@ -193,3 +194,5 @@ for line in lines:
         sv = [a for a in line.split(" ") if a]
         print("sv", sv)
 pp.pprint(data)
+data["marketing_end_df"].plot(x="Company", y="Cost", kind="bar")
+plt.savefig("1.png")
