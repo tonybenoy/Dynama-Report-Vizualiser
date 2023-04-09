@@ -9,10 +9,8 @@ packages = [{include = "dynama_report_vizualiser"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-jupyterlab = "^3.6.2"
 pandas = "^1.5.3"
 numpy = "^1.24.2"
-seaborn = {extras = ["stats"], version = "^0.12.2"}
 opencv-python = "^4.7.0.72"
 ghostscript = "^0.7"
 pypdf2 = "^3.0.1"
