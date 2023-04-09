@@ -63,7 +63,6 @@ charecteristics_c.extend(charecteristics_list)
 demand_df_c = ["Model", "Company"]
 demand_df_c.extend(SEGMENT_DICT.values())
 market_folder = "./market"
-sales_folder = "./sales"
 for file in os.listdir(market_folder):
     if file.endswith(".pdf"):
         period = int(file.split(".")[0]) - 1  # Previous period
