@@ -9,17 +9,12 @@ import cv2
 import pytesseract
 
 sales_df = pd.DataFrame(columns=["Model", "Price", "Period"])
-sales_folder = "./sales"
-for file in os.listdir(sales_folder):
-    if file.endswith(".pdf"):
-        period = int(file.split(".")[0]) - 1  # Previous period
-    else:
-        continue
-    fp = f"{sales_folder}/{file}"
-    result = pdf2jpg.convert_pdf2jpg(fp, "./images_sale", pages="ALL")
+needed = input("needed period")
 for folder in os.listdir("./images_sale"):
     period = int(folder.split(".")[0])
     if period == 7:
+        continue
+    if period != needed:
         continue
     text = ""
     for file in os.listdir(f"./images_sale/{folder}"):
