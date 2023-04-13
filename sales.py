@@ -9,7 +9,7 @@ import cv2
 import pytesseract
 
 sales_df = pd.DataFrame(columns=["Model", "Price", "Period"])
-needed = input("needed period")
+needed = int(input("needed period"))
 for folder in os.listdir("./images_sale"):
     period = int(folder.split(".")[0])
     if period == 7:
