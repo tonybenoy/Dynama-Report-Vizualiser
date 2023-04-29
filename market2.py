@@ -81,12 +81,8 @@ for folder in os.listdir("./images_market"):
             )
     lines = text.splitlines()
     data = {
-        "marketing_end_df": pd.DataFrame(
-            columns=["Company", "1", "2", "3", "4", "5", "6", "sum"]
-        ),
-        "marketing_retail_df": pd.DataFrame(
-            columns=["Company", "1", "2", "3", "4", "5", "6", "sum"]
-        ),
+        "marketing_end_df": pd.DataFrame(columns=["Company", "Cost"]),
+        "marketing_retail_df": pd.DataFrame(columns=["Company", "Cost"]),
         "market_share_df": pd.DataFrame(
             columns=["Company", "1", "2", "3", "4", "5", "6", "Total"]
         ),
@@ -118,49 +114,9 @@ for folder in os.listdir("./images_market"):
                 data[current]["Company"] = [
                     i for i in company_dict.values() if i != "Importer"
                 ]
-                data["marketing_retail_df"]["Company"] = [
-                    i for i in company_dict.values() if i != "Importer"
-                ]
                 continue
-            sv = line.split(" ")
-            if sv[0].isnumeric():
-                if "Sum" in sv:
-                    continue
-                llll = len(sv) // 2
-                marketing_end_list = sv[:llll]
-                marketing_retail_list = sv[llll:]
-                print(marketing_end_list, marketing_retail_list)
-                try:
-                    data[current].loc[len(data[current].index)] = marketing_end_list
-                except ValueError:
-                    print(period)
-                    print("end", marketing_end_list)
-                    marketing_end_list = [float(i) for i in input().split(" ")]
-                    data[current].loc[len(data[current].index)] = [
-                        float(i if i != "O" else 0) for i in marketing_end_list
-                    ]
-                try:
-                    data["marketing_retail_df"].loc[
-                        len(data["marketing_retail_df"].index)
-                    ] = [float(i if i != "O" else 0) for i in marketing_retail_list]
-                except ValueError:
-                    print(period)
-                    print("retail", marketing_retail_list)
-                    marketing_retail_list = [float(i) for i in input().split(" ")]
-                    data["marketing_retail_df"].loc[
-                        len(data["marketing_retail_df"].index)
-                    ] = [float(i if i != "O" else 0) for i in marketing_retail_list]
-            else:
-                data[current]["Company"] = [
-                    company_dict[str(int(company))]
-                    for company in data[current]["Company"]
-                ]
-                data["marketing_retail_df"]["Company"] = [
-                    company_dict[str(int(company))]
-                    for company in data["marketing_retail_df"]["Company"]
-                ]
 
-                current = None
+            sv = line.split(" ")
             # n = 0
             # l = []
             # for i in sv:
@@ -174,101 +130,101 @@ for folder in os.listdir("./images_market"):
             #         l[-1] = f"{l[-1]}{i}"
             #     elif n == 0:
             #         l.append(i)
-            # if "Sum" in sv:
-            #     continue
-        #     try:
-        #         data[current]["Cost"] = [float(i) for i in sv]
-        #     except ValueError:
-        #         print(period)
-        #         print("sv", sv)
-        #         sv = [float(i) for i in input(current).split(" ")]
-        #     # data[current]["Cost"] = sv
-        #     current = None
-        # if marketing_retail in line:
-        #     current = "marketing_retail_df"
-        #     continue
-        # if current == "marketing_retail_df":
-        #     if "Company" in line:
-        #         data[current]["Company"] = [
-        #             i for i in company_dict.values() if i != "Importer"
-        #         ]
-        #         continue
-        #     sv = line.split(" ")
-        #     if "Sum" in sv:
-        #         continue
-        #     # n = 0
-        #     # l = []
-        #     # for i in sv:
-        #     #     if i == "":
-        #     #         continue
-        #     #     if len(i) == 1 and n == 0:
-        #     #         n += 1
-        #     #         l.append(i)
-        #     #     elif n == 1:
-        #     #         n = 0
-        #     #         l[-1] = f"{l[-1]}{i}"
-        #     #     elif n == 0:
-        #     #         l.append(i)
-        #     try:
-        #         data[current]["Cost"] = [float(i) for i in sv]
-        #     except ValueError:
-        #         print(period)
-        #         print("sv", sv)
-        #         sv = [float(i) for i in input(current).split(" ")]
-        #     # data[current]["Cost"] = sv
-        #     current = None
-        # if market_share in line:
-        #     current = "market_share_df"
-        #     continue
-        # if current == "market_share_df":
-        #     if "Company" in line:
-        #         # data[current]["Company"] = [i for i in company_dict.values()]
-        #         continue
-        #     sv = [a for a in line.split(" ") if a]
-        #     if sv[0].isnumeric():
-        #         print(sv)
-        #         if "Sum" in sv:
-        #             continue
-        #         v = [float(i) if i and i.isnumeric() else i for i in sv]
-        #         print(v)
-        #         data[current].loc[len(data[current].index)] = v
-        #     else:
-        #         current = None
-        # if rate_of_coverage in line:
-        #     current = "rate_of_coverage_df"
-        #     continue
-        # if current == "rate_of_coverage_df":
-        #     if "Company" in line:
-        #         # data[current]["Company"] = [i for i in company_dict.values()]
-        #         continue
-        #     sv = [a for a in line.split(" ") if a]
-        #     if sv[0].isnumeric():
-        #         if len(sv[1:]) < 7:
-        #             for i in range(8 - len(sv)):
-        #                 sv.append(None)
-        #         data[current].loc[len(data[current].index)] = [
-        #             float(i) if i and i.isnumeric() else i for i in sv[1:]
-        #         ]
-        #     else:
-        #         current = None
-        # if marketing_costs in line:
-        #     current = "marketing_costs_df"
-        #     continue
-        # if current == "marketing_costs_df":
-        #     if "Company" in line:
-        #         # data[current]["Company"] = [i for i in company_dict.values()]
-        #         continue
-        #     sv = [a for a in line.split(" ") if a]
-        #     if sv[0].isnumeric():
-        #         if len(sv[1:]) < 7:
-        #             for i in range(8 - len(sv)):
-        #                 sv.append(None)
-        #         data[current].loc[len(data[current].index)] = [
-        #             float(i) if i and i.isnumeric() else i for i in sv[1:]
-        #         ]
+            if "Sum" in sv:
+                continue
+            try:
+                data[current]["Cost"] = [float(i) for i in sv]
+            except ValueError:
+                print(period)
+                print("sv", sv)
+                sv = [float(i) for i in input(current).split(" ")]
+            # data[current]["Cost"] = sv
+            current = None
+        if marketing_retail in line:
+            current = "marketing_retail_df"
+            continue
+        if current == "marketing_retail_df":
+            if "Company" in line:
+                data[current]["Company"] = [
+                    i for i in company_dict.values() if i != "Importer"
+                ]
+                continue
+            sv = line.split(" ")
+            if "Sum" in sv:
+                continue
+            # n = 0
+            # l = []
+            # for i in sv:
+            #     if i == "":
+            #         continue
+            #     if len(i) == 1 and n == 0:
+            #         n += 1
+            #         l.append(i)
+            #     elif n == 1:
+            #         n = 0
+            #         l[-1] = f"{l[-1]}{i}"
+            #     elif n == 0:
+            #         l.append(i)
+            try:
+                data[current]["Cost"] = [float(i) for i in sv]
+            except ValueError:
+                print(period)
+                print("sv", sv)
+                sv = [float(i) for i in input(current).split(" ")]
+            # data[current]["Cost"] = sv
+            current = None
+        if market_share in line:
+            current = "market_share_df"
+            continue
+        if current == "market_share_df":
+            if "Company" in line:
+                # data[current]["Company"] = [i for i in company_dict.values()]
+                continue
+            sv = [a for a in line.split(" ") if a]
+            if sv[0].isnumeric():
+                print(sv)
+                if "Sum" in sv:
+                    continue
+                v = [float(i) if i and i.isnumeric() else i for i in sv]
+                print(v)
+                data[current].loc[len(data[current].index)] = v
+            else:
+                current = None
+        if rate_of_coverage in line:
+            current = "rate_of_coverage_df"
+            continue
+        if current == "rate_of_coverage_df":
+            if "Company" in line:
+                # data[current]["Company"] = [i for i in company_dict.values()]
+                continue
+            sv = [a for a in line.split(" ") if a]
+            if sv[0].isnumeric():
+                if len(sv[1:]) < 7:
+                    for i in range(8 - len(sv)):
+                        sv.append(None)
+                data[current].loc[len(data[current].index)] = [
+                    float(i) if i and i.isnumeric() else i for i in sv[1:]
+                ]
+            else:
+                current = None
+        if marketing_costs in line:
+            current = "marketing_costs_df"
+            continue
+        if current == "marketing_costs_df":
+            if "Company" in line:
+                # data[current]["Company"] = [i for i in company_dict.values()]
+                continue
+            sv = [a for a in line.split(" ") if a]
+            if sv[0].isnumeric():
+                if len(sv[1:]) < 7:
+                    for i in range(8 - len(sv)):
+                        sv.append(None)
+                data[current].loc[len(data[current].index)] = [
+                    float(i) if i and i.isnumeric() else i for i in sv[1:]
+                ]
 
-        #     else:
-        #         current = None
+            else:
+                current = None
         if segments in line:
             current = "segments"
             continue
