@@ -187,7 +187,12 @@ for folder in os.listdir("./images_market"):
                     continue
                 v = [float(i) if i and i.isnumeric() else i for i in sv]
                 print(v)
-                data[current].loc[len(data[current].index)] = v
+                try:
+                    data[current].loc[len(data[current].index)] = v
+                except ValueError:
+                    print(period)
+                    print("sv", sv)
+                    sv = [float(i) for i in input(current).split(" ")]
             else:
                 current = None
         if rate_of_coverage in line:

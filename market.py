@@ -24,6 +24,8 @@ additional = "Additional"
 total = "Total"
 demand = "Demand rate"
 charecteristics = "Product characteristics"
+market_share_model = "Market share of models"
+rate_of_coverage_model = "Rate of coverage (%) in retail"
 SEGMENT_DICT = OrderedDict(
     {
         v: k
@@ -66,9 +68,7 @@ market_folder = "./market"
 needed = int(input("needed"))
 for folder in os.listdir("./images_market"):
     period = int(folder.split(".")[0])
-    print(period == needed)
     if period != needed:
-        print(period, needed)
         continue
 
     text = ""
@@ -103,6 +103,12 @@ for folder in os.listdir("./images_market"):
         "first_time_df": pd.DataFrame(columns=["Segment", "Size"]),
         "additional_df": pd.DataFrame(columns=["Segment", "Size"]),
         "total_purchase_df": pd.DataFrame(columns=["Segment", "Size"]),
+        "market_share_model_df": pd.DataFrame(
+            columns=["Company", "1", "2", "3", "4", "5", "6", "sum"]
+        ),
+        "rate_of_coverage_model_df": pd.DataFrame(
+            columns=["Company", "1", "2", "3", "4", "5", "6"]
+        ),
     }
     current = None
     segment_size_input = []
@@ -110,6 +116,59 @@ for folder in os.listdir("./images_market"):
     for line in lines:
         if not line:
             continue
+        if market_share_model in line:
+            current = "market_share_model_df"
+            continue
+        if current == "market_share_model_df":
+            if "Company" in line:
+                data[current]["Company"] = [
+                    i for i in company_dict.values() if i != "Importer"
+                ]
+                data["marketing_retail_df"]["Company"] = [
+                    i for i in company_dict.values() if i != "Importer"
+                ]
+                continue
+            sv = line.split(" ")
+            if sv[0].isnumeric():
+                if "Sum" in sv:
+                    continue
+                llll = (len(sv) // 2) + 1
+                market_share_list = sv[:llll]
+                market_coverage_list = sv[llll:]
+                print(market_share_list, market_coverage_list)
+                print(data[current].columns)
+                try:
+                    data[current].loc[len(data[current].index)] = market_share_list
+                except ValueError:
+                    print(period)
+                    print("share", market_share_list)
+                    market_share_list = [float(i) for i in input().split(" ")]
+                    data[current].loc[len(data[current].index)] = [
+                        float(i if i != "O" else 0) for i in market_share_list
+                    ]
+                try:
+                    data["rate_of_coverage_model_df"].loc[
+                        len(data["rate_of_coverage_model_df"].index)
+                    ] = [float(i if i != "O" else 0) for i in market_coverage_list]
+                except ValueError:
+                    print(period)
+                    print("rate cov", market_coverage_list)
+                    market_coverage_list = [float(i) for i in input().split(" ")]
+                    data["rate_of_coverage_model_df"].loc[
+                        len(data["rate_of_coverage_model_df"].index)
+                    ] = [float(i if i != "O" else 0) for i in market_coverage_list]
+            else:
+                data[current]["Company"] = [
+                    company_dict[str(int(company))]
+                    for company in data[current]["Company"]
+                ]
+                data["rate_of_coverage_model_df"]["Company"] = [
+                    company_dict[str(int(company))]
+                    for company in data["rate_of_coverage_model_df"]["Company"]
+                ]
+
+                current = None
+
         if marketing_end in line:
             current = "marketing_end_df"
             continue
@@ -234,23 +293,23 @@ for folder in os.listdir("./images_market"):
         #         data[current].loc[len(data[current].index)] = v
         #     else:
         #         current = None
-        # if rate_of_coverage in line:
-        #     current = "rate_of_coverage_df"
-        #     continue
-        # if current == "rate_of_coverage_df":
-        #     if "Company" in line:
-        #         # data[current]["Company"] = [i for i in company_dict.values()]
-        #         continue
-        #     sv = [a for a in line.split(" ") if a]
-        #     if sv[0].isnumeric():
-        #         if len(sv[1:]) < 7:
-        #             for i in range(8 - len(sv)):
-        #                 sv.append(None)
-        #         data[current].loc[len(data[current].index)] = [
-        #             float(i) if i and i.isnumeric() else i for i in sv[1:]
-        #         ]
-        #     else:
-        #         current = None
+        if rate_of_coverage in line:
+            current = "rate_of_coverage_df"
+            continue
+        if current == "rate_of_coverage_df":
+            if "Company" in line:
+                # data[current]["Company"] = [i for i in company_dict.values()]
+                continue
+            sv = [a for a in line.split(" ") if a]
+            if sv[0].isnumeric():
+                if len(sv[1:]) < 7:
+                    for i in range(8 - len(sv)):
+                        sv.append(None)
+                data[current].loc[len(data[current].index)] = [
+                    float(i) if i and i.isnumeric() else i for i in sv[1:]
+                ]
+            else:
+                current = None
         # if marketing_costs in line:
         #     current = "marketing_costs_df"
         #     continue
@@ -399,26 +458,30 @@ def get_df(name):
 
 
 marketing_end_df = get_df("marketing_end_df")
-marketing_end_df.to_csv("marketing_end_df.csv")
+marketing_end_df.to_csv(f"{needed}_marketing_end_df.csv")
 marketing_retail_df = get_df("marketing_retail_df")
-marketing_retail_df.to_csv("marketing_retail_df.csv")
+marketing_retail_df.to_csv(f"{needed}_marketing_retail_df.csv")
 marketing_costs_df = get_df("marketing_costs_df")
-marketing_costs_df.to_csv("marketing_costs_df.csv")
+marketing_costs_df.to_csv(f"{needed}_marketing_costs_df.csv")
 market_share_df = get_df("market_share_df")
-market_share_df.to_csv("market_share_df.csv")
+market_share_df.to_csv(f"{needed}_market_share_df.csv")
 segments_size_df = get_df("segments_size_df")
-segments_size_df.to_csv("segments_size_df.csv")
+segments_size_df.to_csv(f"{needed}_segments_size_df.csv")
 rate_of_coverage_segment_df = get_df("rate_of_coverage_segment_df")
-rate_of_coverage_segment_df.to_csv("rate_of_coverage_segment_df.csv")
+rate_of_coverage_segment_df.to_csv(f"{needed}_rate_of_coverage_segment_df.csv")
 first_time_df = get_df("first_time_df")
-first_time_df.to_csv("first_time_df.csv")
+first_time_df.to_csv(f"{needed}_first_time_df.csv")
 additional_df = get_df("additional_df")
-additional_df.to_csv("additional_df.csv")
+additional_df.to_csv(f"{needed}_additional_df.csv")
 total_purchase_df = get_df("total_purchase_df")
-total_purchase_df.to_csv("total_purchase_df.csv")
+total_purchase_df.to_csv(f"{needed}_total_purchase_df.csv")
 demand_df = get_df("demand_df")
-demand_df.to_csv("demand_df.csv")
+demand_df.to_csv(f"{needed}_demand_df.csv")
 charecteristics_df = get_df("charecteristics_df")
-charecteristics_df.to_csv("charecteristics_df.csv")
+charecteristics_df.to_csv(f"{needed}_charecteristics_df.csv")
 rate_of_coverage_df = get_df("rate_of_coverage_df")
-rate_of_coverage_df.to_csv("rate_of_coverage_df.csv")
+rate_of_coverage_df.to_csv(f"{needed}_rate_of_coverage_df.csv")
+market_share_model_df = get_df("market_share_model_df")
+market_share_model_df.to_csv(f"{needed}_market_share_model_df.csv")
+rate_of_coverage_model_df = get_df("rate_of_coverage_model_df")
+rate_of_coverage_model_df.to_csv(f"{needed}_rate_of_coverage_model_df.csv")
