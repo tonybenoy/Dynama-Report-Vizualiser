@@ -50,4 +50,4 @@ for folder in os.listdir("./images_sale"):
         price = " ".join(sv[1:])
         sales_df.loc[len(sales_df.index)] = [model, price, period]
 
-sales_df.to_csv("sales_df.csv", index=False)
+sales_df.to_csv(f"{needed}_sales_df.csv", index=False)
