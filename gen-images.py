@@ -1,5 +1,5 @@
 from collections import OrderedDict
-from PyPDF2 import PdfReader
+# from PyPDF2 import PdfReader
 import pandas as pd
 import pprint
 import matplotlib.pyplot as plt

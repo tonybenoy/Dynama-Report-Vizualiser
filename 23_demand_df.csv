@@ -1,0 +1,25 @@
+,Model,Company,Small income young families,Small income middle-aged families,Small income elderly families,Average income young families,Average income middle-aged families,Average income elderly families,Large income families,Period
+0,Digi1,Digi,0.0,0.0,0.0,0.0,0.0,0.0,0.0,23
+1,Digi2,Digi,0.0,0.0,0.0,1.0,0.0,0.0,1.0,23
+2,Digi3,Digi,5.0,1.0,1.0,7.0,3.0,1.0,9.0,23
+3,Digi4,Digi,9.0,10.0,11.0,9.0,9.0,11.0,7.0,23
+4,Profit1,Profit,0.0,0.0,0.0,0.0,0.0,0.0,0.0,23
+5,Profit2,Profit,0.0,0.0,0.0,0.0,0.0,0.0,0.0,23
+6,Profit3,Profit,2.0,1.0,0.0,3.0,1.0,1.0,3.0,23
+7,Profit4,Profit,12.0,17.0,19.0,11.0,16.0,18.0,8.0,23
+8,Profit5,Profit,3.0,2.0,1.0,3.0,2.0,2.0,2.0,23
+9,Primus1,Primus,0.0,0.0,0.0,0.0,0.0,0.0,0.0,23
+10,Primus2,Primus,3.0,3.0,2.0,3.0,3.0,2.0,3.0,23
+11,Primus3,Primus,2.0,1.0,0.0,3.0,1.0,1.0,5.0,23
+12,Primus4,Primus,12.0,19.0,24.0,10.0,17.0,21.0,8.0,23
+13,Primus5,Primus,9.0,7.0,4.0,9.0,9.0,6.0,9.0,23
+14,Primus6,Primus,1.0,0.0,0.0,1.0,0.0,0.0,1.0,23
+15,Best1,Best,0.0,0.0,0.0,0.0,0.0,0.0,0.0,23
+16,Best2,Best,2.0,2.0,2.0,2.0,2.0,2.0,1.0,23
+17,Best3,Best,1.0,0.0,0.0,1.0,1.0,0.0,2.0,23
+18,Best4,Best,5.0,3.0,1.0,6.0,4.0,2.0,7.0,23
+19,Best5,Best,10.0,6.0,3.0,11.0,8.0,5.0,11.0,23
+20,Best6,Best,11.0,15.0,18.0,8.0,12.0,15.0,6.0,23
+21,Mikro1,Mikro,0.0,0.0,0.0,0.0,0.0,0.0,0.0,23
+22,Mikro2,Mikro,4.0,1.0,0.0,6.0,2.0,1.0,10.0,23
+23,Mikro3,Mikro,8.0,11.0,13.0,7.0,9.0,12.0,6.0,23

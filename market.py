@@ -72,14 +72,17 @@ for folder in os.listdir("./images_market"):
         continue
 
     text = ""
-    for file in os.listdir(f"./images_market/{folder}"):
+    for file in sorted(os.listdir(f"./images_market/{folder}")):
         if file.endswith(".jpg"):
+            print(file)
             image = cv2.imread(f"./images_market/{folder}/{file}")
             text = (
-                pytesseract.image_to_string(image=image, lang="eng", config="--psm 6")
-                + text
+                text+pytesseract.image_to_string(image=image, lang="eng", config="--psm 6")
+
             )
+
     lines = text.splitlines()
+
     data = {
         "marketing_end_df": pd.DataFrame(
             columns=["Company", "1", "2", "3", "4", "5", "6", "sum"]
@@ -433,6 +436,7 @@ for folder in os.listdir("./images_market"):
             current = "charecteristics_df"
             continue
         if current == "charecteristics_df":
+            print(line)
             sv = [a for a in line.split(" ") if a]
             if sv[0].isnumeric():
                 try:

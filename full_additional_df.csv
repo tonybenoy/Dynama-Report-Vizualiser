@@ -15,6 +15,14 @@ Unnamed: 0,Segment,Size,Rate,Period
 5,Average income elderly families,,25.0,13
 6,Large income families,,207.0,13
 7,Total,,678.0,13
+0,Small income young families,,1000.0,21
+1,Small income middle-aged families,,1331.0,21
+2,Small income elderly families,,968.0,21
+3,Average income young families,,1577.0,21
+4,Average income middle-aged families,,2527.0,21
+5,Average income elderly families,,717.0,21
+6,Large income families,,3020.0,21
+7,Total,,11140.0,21
 0,Small income young families,,232.0,14
 1,Small income middle-aged families,,257.0,14
 2,Small income elderly families,,238.0,14
@@ -23,6 +31,22 @@ Unnamed: 0,Segment,Size,Rate,Period
 5,Average income elderly families,,96.0,14
 6,Large income families,,666.0,14
 7,Total,,2219.0,14
+0,Small income young families,,332.0,19
+1,Small income middle-aged families,,420.0,19
+2,Small income elderly families,,318.0,19
+3,Average income young families,,522.0,19
+4,Average income middle-aged families,,808.0,19
+5,Average income elderly families,,220.0,19
+6,Large income families,,1070.0,19
+7,Total,,3690.0,19
+0,Small income young families,,536.0,22
+1,Small income middle-aged families,,733.0,22
+2,Small income elderly families,,524.0,22
+3,Average income young families,,843.0,22
+4,Average income middle-aged families,,1369.0,22
+5,Average income elderly families,,392.0,22
+6,Large income families,,1553.0,22
+7,Total,,5950.0,22
 0,Small income young families,,636.0,17
 1,Small income middle-aged families,,790.0,17
 2,Small income elderly families,,642.0,17
@@ -47,6 +71,22 @@ Unnamed: 0,Segment,Size,Rate,Period
 5,Average income elderly families,,378.0,17
 6,Large income families,,1979.0,17
 7,Total,,6811.0,17
+0,Small income young families,,1629.0,23
+1,Small income middle-aged families,,2268.0,23
+2,Small income elderly families,,1615.0,23
+3,Average income young families,,2527.0,23
+4,Average income middle-aged families,,4142.0,23
+5,Average income elderly families,,1214.0,23
+6,Large income families,,4526.0,23
+7,Total,,17921.0,23
+0,Small income young families,,917.0,20
+1,Small income middle-aged families,,1181.0,20
+2,Small income elderly families,,872.0,20
+3,Average income young families,,1461.0,20
+4,Average income middle-aged families,,2296.0,20
+5,Average income elderly families,,638.0,20
+6,Large income families,,2884.0,20
+7,Total,,10249.0,20
 0,Small income young families,,277.0,15
 1,Small income middle-aged families,,318.0,15
 2,Small income elderly families,,280.0,15

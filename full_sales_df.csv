@@ -1,4 +1,22 @@
 Model,Price,Period
+Digi1,1,23
+Digi2,2 900,23
+Digi3,2900,23
+Digi4,1900,23
+Profit1,1,23
+Profit2,2180,23
+Profit3,2499,23
+Profit4,1897,23
+Profit5,2 299,23
+Best1,1,23
+Best2,1999,23
+Best3,2 699,23
+Best4,2 849,23
+Best5,2 449,23
+Best6,1899,23
+Mikro1,1 600,23
+Mikro2,3400,23
+Mikro3,1 850,23
 Digi1,1,16
 Digi2,3400,16
 Digi3,2200,16
@@ -23,6 +41,23 @@ Best3,3150,15
 Best4,2940,15
 Mikro1,1750,15
 Mikro2,3500,15
+Digi1,1,20
+Digi2,3300,20
+Digi3,2 650,20
+Digi4,2 150,20
+Profit1,1,20
+Profit2,2180,20
+Profit3,2499,20
+Profit4,1 899,20
+Best1,1,20
+Best2,2179,20
+Best3,2 899,20
+Best4,2799,20
+Best5,2 449,20
+Best6,1 899,20
+Mikro1,1600,20
+Mikro2,3400,20
+Mikro3,1900,20
 Digi1,1,18
 Digi2,3290,18
 Digi3,2 350,18
@@ -38,6 +73,24 @@ Best5,2449,18
 Mikro1,1600,18
 Mikro2,3450,18
 Mikro3,1950,18
+Digi1,1,22
+Digi2,2 900,22
+Digi3,2 500,22
+Digi4,1900,22
+Profit1,1,22
+Profit2,2180,22
+Profit3,2499,22
+Profit4,1899,22
+Profit5,2239,22
+Best1,1,22
+Best2,1999,22
+Best3,2 699,22
+Best4,2 699,22
+Best5,2 449,22
+Best6,1899,22
+Mikro1,1 500,22
+Mikro2,3400,22
+Mikro3,1895,22
 Digi1,1999,13
 Digi2,3600,13
 Profit1,1704,13
@@ -74,3 +127,38 @@ Best2,2 268,14
 Best3,3150,14
 Mikro1,1950,14
 Mikro2,3750,14
+Digi1,1,21
+Digi2,2 900,21
+Digi3,2 600,21
+Digi4,2100,21
+Profit1,1,21
+Profit2,2180,21
+Profit3,2499,21
+Profit4,1899,21
+Profit5,2 299,21
+Best1,1,21
+Best2,2 159,21
+Best3,2919,21
+Best4,2 699,21
+Best5,2 449,21
+Best6,1879,21
+Mikro1,1 500,21
+Mikro2,3400,21
+Mikro3,1895,21
+Digi1,1,19
+Digi2,3250,19
+Digi3,2350,19
+Digi4,2150,19
+Profit1,1,19
+Profit2,2210,19
+Profit3,2 599,19
+Profit4,1 986,19
+Best1,1,19
+Best2,2229,19
+Best3,2999,19
+Best4,2779,19
+Best5,2579,19
+Best6,1979,19
+Mikro1,1650,19
+Mikro2,3450,19
+Mikro3,1950,19
